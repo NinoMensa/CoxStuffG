@@ -1,0 +1,59 @@
+#Tbl1{color:blue;}
+
+#Tbl1,tr,td {
+    border: 1px solid pink;
+  }
+
+tr:nth-of-type(even) td:nth-of-type(odd),tr:nth-of-type(odd) td:nth-of-type(even)
+    {
+        color:green;background-color:green;
+    }
+
+tr:nth-of-type(even) td:nth-of-type(even),tr:nth-of-type(odd) td:nth-of-type(odd)
+    {
+        color:yellow;background-color:yellow;
+    }
+
+.a {border: none; border-radius:10px;background-color:yellow;
+    
+  background-color:#feed11 ;
+  padding: 6px 52px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;}
+
+ .b {border: none; border-radius:10px;background-color:yellow;
+    
+    background-color:#feed11 ;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 44px 22px;
+    cursor: pointer;}
+
+.c {border-color:black; border-radius:10px;background-color:yellow;
+    
+        background-color:white ;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 44px 22px;
+        cursor: pointer;}
+
+.d {border:none;  
+    color:white;
+    background-image:linear-gradient(to right, rgb(214, 4, 144) 0%, rgb(252, 73, 133) 100%) ;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 74px 22px;
+    cursor: pointer;}
