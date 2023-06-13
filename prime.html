@@ -1,41 +1,142 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <script>
-      function isPrime(n) {
-        if (n <= 1) {
-          return false;
-        }
-        if (n <= 3) {
-          return true;
-        }
-        if (n % 2 === 0 || n % 3 === 0) {
-          return false;
-        }
-        let i = 5;
-        while (i * i <= n) {
-          if (n % i === 0 || n % (i + 2) === 0) {
+        function isPrimes(n) {
+          if (n <= 1) {
             return false;
           }
-          i += 6;
-        }
-        return true;
-      }
-
-      function generatePrimes() {
-        let primes = '';
-        for (let number = 0; number <= 100; number++) {
-          if (isPrime(number)) {
-            primes += number + ', ';
+          if (n <= 3) {
+            return true;
           }
+          if (n % 2 === 0 || n % 3 === 0) {
+            return false;
+          }
+          let i = 5;
+          while (i * i <= n) {
+            if (n % i === 0 || n % (i + 2) === 0) {
+              return false;
+            }
+            i += 6;
+          }
+          return true;
         }
-        document.getElementById('primeNumbers').value = primes;
-      }
+  
+        function generatePrimes()
+        {
+          let primes = '';
+          for (let number = 0; number <= 100; number++) {
+            if (isPrimes(number)) {
+              primes += number + ', ';
+            }
+          }
+          document.getElementById('primeNumbers').value = primes;
+        }
     </script>
-  </head>
 
-  <body>
+
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {      
+            //generate random number   
+
+            /*function randomNumGenerator(){
+              while(true){
+                let randomNumber = Math.floor(Math.random() * 11) + 1;
+                if (checkPrime(randomNumber)) {
+                  break;
+              }
+
+              return randomNumber;
+            }
+
+            function checkPrime(numRan){
+              if (numRan <= 1) {
+                return false;
+                }
+
+              for (let i = 2; i <= Math.sqrt(numRan); i++) {
+                if (numRan % i === 0) {
+                  return false;
+                }                
+              }
+
+              return true;
+            }
+
+            const randomPrime = generateRandomPrime();
+          
+*/
+            let randomNumber = Math.floor(Math.random() * 11) + 1;
+
+            console.log(randomNumber);
+            let attempts = 6; 
+
+            const userInput = document.getElementById('UserInput');
+            const resultParagraph = document.getElementById('Result');
+
+            document.getElementById('GuessButton').addEventListener('click', () => {
+                const userGuess = parseInt(userInput.value);
+
+                //make sure input is prime
+                function isPrime(num) {
+
+                    //input can't be less than 1 or invalid
+                    if (num <= 1) {
+                        return false;
+                    }
+                    
+                    for (let i = 2; i <= Math.sqrt(num); i++) {
+                        if (num % i === 0) {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+
+                if (isNaN(userGuess)) {
+                    resultParagraph.textContent = 'Please enter a valid number';
+                } else if (!isPrime(userGuess)) {
+                    resultParagraph.textContent = 'Number not prime. Try again';
+                    attempts--;
+                } else if (userGuess === randomNumber) {
+                    resultParagraph.textContent = 'You won, you guessed the correct number!';
+                    //attempts = 0;
+                } else if (userGuess > randomNumber){
+                    resultParagraph.textContent = 'Wrong number. Your number is greater than the correct number!';
+                    attempts--;
+                }
+                else if (userGuess < randomNumber){
+                    resultParagraph.textContent = 'Wrong number. Your number is lesser than the correct number!';
+                    attempts--;
+                }
+
+                if (attempts === 0) {
+                    resultParagraph.textContent = 'You lost, you are out of attempts!';
+                }
+
+                document.getElementById('AttemptsRemaining').textContent = attempts.toString();
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>Below is a generator that generates random numbers between 0 and 100</p>
     <textarea id="primeNumbers" rows="5" cols="20"></textarea>
-    <button type="button" onclick="generatePrimes()">Generate</button>
-  </body>
+    <button type="button" onclick="generatePrimes()">Generate Prime Numbers</button>
+
+
+    <p>Wordle... but with prime numbers</p>
+    <p>(You have to guess the number)</p>
+    <p>A random prime number has been generated between 1 and 100</p>
+    <p>You have <span id="AttemptsRemaining">6</span> attempts to guess the number.</p>
+
+    <label for="UserInput">Enter a number:</label><br>
+    <input type="text" id="UserInput"><br>
+
+    <button id="GuessButton">Guess</button>
+
+    <p id="Result"></p>
+</body>
 </html>
