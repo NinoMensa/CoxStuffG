@@ -4,16 +4,9 @@
     <head>
         <meta charset="utf-8" />
         <!-- Required CDN's -->
-        <link rel="stylesheet"
-            href=
-    "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src=
-    "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
-    </script>
-        <script src=
-    "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
-    
-    </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <style>
             .calculator {
             padding: 4px;
@@ -54,8 +47,9 @@
 
 [Yesterday 14:38] Errington, Callum (CAI - Leeds)
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
+
 <body style="background-color:#f9f9fa;">
   
     <div class="row">
@@ -142,7 +136,7 @@
                         <div class="col-sm-3">
                             <div class="design not"
                                  id="backspace">
-                              ? 
+                              BACK 
                           </div>
                         </div>
                         <div class="col-sm-3">
@@ -211,6 +205,13 @@
         // All Clear
         $("#allClear").click(function() {
             $("#expression").val("0");
+        });
+
+        $(".equals").click(function()
+        {
+            var expression = $("#expression").val(); 
+            $("#result").val(result); 
+            $("#expression").val(result);
         });
     </script>
 </body>
