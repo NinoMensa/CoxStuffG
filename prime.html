@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+
+
   <script>
     function isPrimes(n) {
       if (n <= 1) {
@@ -69,7 +76,8 @@
           console.log(randomNumber);
 
           let attempts = 6;
-          
+          let hintUsed = false;
+
           const userInput = document.getElementById('UserInput');
           const resultParagraph = document.getElementById('Result');
 
@@ -111,11 +119,30 @@
 
             document.getElementById('AttemptsRemaining').textContent = attempts.toString();
           });
-        });
+
+          document.getElementById('HintButton').addEventListener('click', () => {
+            if (!hintUsed && attempts > 1) {
+              hintUsed = true;
+              const lowerRange = Math.max(randomNumber - 10, 1);
+              const upperRange = Math.min(randomNumber + 10, 100);
+              resultParagraph.textContent = `Hint: The number is between ${lowerRange} and ${upperRange}`;
+              attempts--;
+              document.getElementById('AttemptsRemaining').textContent = attempts.toString();
+            }
+          });
+        }); 
     </script>
 </head>
 <!--------------------------------------------------------->
-<body>
+
+<body style="background-color:#6e6efc;">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+  <div class="row">
+    <div class="col-sm-8"></div>
+  </div>
+
+
   <p>Below is a generator that generates random numbers between 0 and 100</p>
     <textarea id="primeNumbers" rows="5" cols="20"></textarea>
     <button type="button" onclick="generatePrimes()">Generate Prime Numbers</button>
@@ -124,12 +151,12 @@
     <p>(You have to guess the number)</p>
     <p>A random prime number has been generated between 1 and 100</p>
     <p>You have <span id="AttemptsRemaining">6</span> attempts to guess the number.</p>
-    <p>You can use hints in exchange for an attempt</p>
+    <p>You can get hints in exchange for an attempt</p>
     <label for="UserInput">Enter a number:</label><br>
     <input type="text" id="UserInput"><br><br>
 
-    <button id="GuessButton">Guess</button>
-    <button id="HintButton">Hint</button>
+    <button type="button" id="GuessButton">Guess</button>  
+    <button type="button" id="HintButton">Hint</button>
 
     <p id="Result"></p>
 </body>
